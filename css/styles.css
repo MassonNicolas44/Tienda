@@ -1,0 +1,95 @@
+/*Estilos Generales*/
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background: url(../img/Fondo.jpg);
+}
+
+/*Cambia de Color con el Cursor*/
+a:hover {
+    color: #fb6b6b
+}
+
+
+/*Cabecera-Header*/
+#header {
+    height: 145px;
+    background-color: #F0F0F0;
+}
+
+/*Contenedor Pagina Principal*/
+#contenedor {
+    width: 80%;
+    margin: 0px auto;
+    box-shadow: 0px 0px 15px gray;
+    background-color: white;
+}
+
+/*Imagen Logo*/
+#imagen {
+    padding: 20px;
+    margin-left: 25px;
+    float: left;
+}
+
+/*Imagen Logo Img*/
+
+#imagen img {
+    float: left;
+    height: 100px;
+}
+
+/*Imagen Enlaces*/
+
+#imagen a {
+    float: left;
+    font-size: 35px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+
+
+
+/*Menu Base*/
+#menu {
+    clear: both;
+    background: #2f2f2f;
+    color: gray;
+    height: 60px;
+}
+
+/*Menu Enlaces*/
+#menu a {
+    display: block;
+    color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/*Menu Cursor*/
+#menu a:hover {
+    background-color: rgb(100, 3, 3);
+}
+
+/*Menu Lista*/
+#menu ul {
+    list-style: none;
+    text-decoration: none;
+    margin: 0px auto;
+
+}
+
+/*Menu Elemento de la Lista*/
+#menu ul li {
+    line-height: 60px;
+    float: left;
+    border-right: 2px solid #fefefe;
+}
