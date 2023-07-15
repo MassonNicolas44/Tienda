@@ -93,3 +93,136 @@ a:hover {
     float: left;
     border-right: 2px solid #fefefe;
 }
+
+
+
+/*CONTENT*/
+#contenido{
+    margin: 0px auto;
+    overflow: hidden;
+    background: white;
+}
+
+/*BARRA LATERAL*/
+#barra{
+    width: 20%;
+    min-height: 500px;
+    float: left;
+    margin-top:20px;
+    margin-left: 10px;
+ 
+}
+
+#barra .block_aside{
+    display: block;
+    width: 90%;
+    margin: 5px auto;
+    padding: 10px;
+
+}
+
+#barra h3{
+    display: block;
+    color: #0c0a0a;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+   background: #f7c6c6;
+   border-bottom: 4px solid #0c0a0a;
+}
+
+#barra ul li{
+    list-style: square;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+/*Email / Contraseña*/
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+
+select{
+    display: block;
+    width: 100%;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+
+/*Botton Enviar*/
+
+input[type="button"],
+input[type="submit"],
+
+button, .button{
+    display: block;
+    margin-top: 10px;
+    border-radius: 4px;
+    width: auto;
+    padding: 5px;
+    color: white;
+    background: rgb(83, 83, 241);
+}
+.button{
+    background: #f7c6c6;
+    font-size: 18px;
+    color: black;
+    text-decoration: none;
+}
+
+
+/*Contenido Central*/
+
+#central{
+    width: 74%;
+    float: right;
+    min-height: 500px;
+    border-left: 2px solid #ccc;
+    box-shadow: -3px 0px -3px gray;
+    background-color: white;
+    padding: 30px;
+}
+
+#central h1{
+font-size: 30px;
+font-weight: bold;
+letter-spacing: 2px;
+text-align: center;
+border-bottom: 2px solid #ccc;
+margin-bottom: 15px;
+padding-bottom: 15px;
+
+}
+
+/*Productos*/
+.product{
+width: auto;
+float: left;
+margin-left: 20px;
+text-align: center;
+}
+
+.prduct img{
+    width: 50px;
+    margin-bottom: 8px;
+}
+
+.product h2{
+font-size: 20px;
+margin-bottom: 8px;
+
+    }
+
+    /*Footer */
+    #footer{
+        clear: both;
+        text-align: center;
+        padding: 10px;
+        color: white;
+        background: #000000;
+        border-top: 3px solid #1eb6e9;
+    }
