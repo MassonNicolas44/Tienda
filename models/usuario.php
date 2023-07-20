@@ -2,7 +2,8 @@
 
 require_once 'config/bd.php';
 
-class Usuario{
+class Usuario
+{
 	private $id;
 	private $nombre;
 	private $apellido;
@@ -11,79 +12,116 @@ class Usuario{
 	private $rol;
 	private $imagen;
 	private $bd;
-	
-	public function __construct() {
+
+	public function __construct()
+	{
 		$this->bd = Database::conectar();
 	}
-	
-	function getId() {
+
+	function getId()
+	{
 		return $this->id;
 	}
 
-	function getNombre() {
+	function getNombre()
+	{
 		return $this->nombre;
 	}
 
-	function getApellido() {
+	function getApellido()
+	{
 		return $this->apellido;
 	}
 
-	function getEmail() {
+	function getEmail()
+	{
 		return $this->email;
 	}
 
-	function getPassword() {
+	function getPassword()
+	{
 		return password_hash($this->bd->real_escape_string($this->password), PASSWORD_BCRYPT, ['cost' => 4]);
 	}
 
-	function getRol() {
+	function getRol()
+	{
 		return $this->rol;
 	}
 
-	function getImagen() {
+	function getImagen()
+	{
 		return $this->imagen;
 	}
 
-	function setId($id) {
+	function setId($id)
+	{
 		$this->id = $id;
 	}
 
-	function setNombre($nombre) {
+	function setNombre($nombre)
+	{
 		$this->nombre = $this->bd->real_escape_string($nombre);
 	}
 
-	function setApellido($apellido) {
+	function setApellido($apellido)
+	{
 		$this->apellido = $this->bd->real_escape_string($apellido);
 	}
 
-	function setEmail($email) {
+	function setEmail($email)
+	{
 		$this->email = $this->bd->real_escape_string($email);
 	}
 
-	function setPassword($password) {
+	function setPassword($password)
+	{
 		$this->password = $password;
 	}
 
-	function setRol($rol) {
+	function setRol($rol)
+	{
 		$this->rol = $rol;
 	}
 
-	function setImagen($imagen) {
+	function setImagen($imagen)
+	{
 		$this->imagen = $imagen;
 	}
 
-	public function guardar(){
-		$sql = "INSERT INTO usuarios VALUES(NULL, '{$this->getNombre()}', '{$this->getApellido()}', '{$this->getEmail()}', '{$this->getPassword()}', 'usuario', null);";
+	public function guardar()
+	{
+		$sql = "INSERT INTO usuarios VALUES(NULL, '{$this->getNombre()}', '{$this->getApellido()}', '{$this->getEmail()}', '{$this->getPassword()}', '{$this->getRol()}', null);";
 		$guardar = $this->bd->query($sql);
-		
+
 		$resultado = false;
-		if($guardar){
+		if ($guardar) {
 			$resultado = true;
 		}
 		return $resultado;
 	}
-	
-	
-	
-	
+
+	public function login()
+	{
+		$resultado = false;
+		$email = $this->email;
+		$password = $this->password;
+
+		$sql = "SELECT * from usuarios where email='$email'";
+		$login = $this->bd->query($sql);
+
+		if ($login && $login->num_rows == 1) {
+			//Obtener datos del usuario
+			$usuario = $login->fetch_object();
+			//Verificar contraseña con la base de datos
+			$verificar = password_verify($password, $usuario->password);
+			$resultado = false;
+			if ($verificar) {
+				$resultado = $usuario;
+			}
+		}
+
+		return $resultado;
+
+	}
+
 }

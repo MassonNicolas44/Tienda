@@ -23,7 +23,7 @@
 
             <ul>
                 <li>
-                    <a href="#">Inicio</a>
+                    <a href="<?=base_url?>index.php">Inicio</a>
                 </li>
 
                 <li>
@@ -33,6 +33,10 @@
                 <li>
                     <a href="#">Categoria 2</a>
                 </li>
+                <li>
+                    <a href="<?=base_url?>?controller=usuario&accion=registrar">Registrar Usuario</a>
+                </li>
+
 
             </ul>
 
