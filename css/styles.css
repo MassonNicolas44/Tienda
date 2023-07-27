@@ -97,23 +97,23 @@ a:hover {
 
 
 /*CONTENT*/
-#contenido{
+#contenido {
     margin: 0px auto;
     overflow: hidden;
     background: white;
 }
 
 /*BARRA LATERAL*/
-#barra{
+#barra {
     width: 20%;
     min-height: 500px;
     float: left;
-    margin-top:20px;
+    margin-top: 20px;
     margin-left: 10px;
- 
+
 }
 
-#barra .block_aside{
+#barra .block_aside {
     display: block;
     width: 90%;
     margin: 5px auto;
@@ -121,18 +121,18 @@ a:hover {
 
 }
 
-#barra h3{
+#barra h3 {
     display: block;
     color: #0c0a0a;
     width: 100%;
     text-align: center;
     font-size: 20px;
     font-weight: bold;
-   background: #f7c6c6;
-   border-bottom: 4px solid #0c0a0a;
+    background: #f7c6c6;
+    border-bottom: 4px solid #0c0a0a;
 }
 
-#barra ul li{
+#barra ul li {
     list-style: square;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -145,7 +145,7 @@ input[type="text"],
 input[type="password"],
 input[type="email"],
 
-select{
+select {
     display: block;
     width: 100%;
     margin-top: 2px;
@@ -158,7 +158,8 @@ select{
 input[type="button"],
 input[type="submit"],
 
-button, .button{
+button,
+.button {
     display: block;
     margin-top: 10px;
     border-radius: 4px;
@@ -167,7 +168,8 @@ button, .button{
     color: white;
     background: rgb(83, 83, 241);
 }
-.button{
+
+.button {
     background: #f7c6c6;
     font-size: 18px;
     color: black;
@@ -177,7 +179,7 @@ button, .button{
 
 /*Contenido Central*/
 
-#central{
+#central {
     width: 74%;
     float: right;
     min-height: 500px;
@@ -187,42 +189,42 @@ button, .button{
     padding: 30px;
 }
 
-#central h1{
-font-size: 30px;
-font-weight: bold;
-letter-spacing: 2px;
-text-align: center;
-border-bottom: 2px solid #ccc;
-margin-bottom: 15px;
-padding-bottom: 15px;
+#central h1 {
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-align: center;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
 
 }
 
 /*Productos*/
-.product{
-width: auto;
-float: left;
-margin-left: 20px;
-text-align: center;
+.product {
+    width: auto;
+    float: left;
+    margin-left: 20px;
+    text-align: center;
 }
 
-.prduct img{
+.prduct img {
     width: 50px;
     margin-bottom: 8px;
 }
 
-.product h2{
-font-size: 20px;
-margin-bottom: 8px;
+.product h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
 
-    }
+}
 
-    /*Footer */
-    #footer{
-        clear: both;
-        text-align: center;
-        padding: 10px;
-        color: white;
-        background: #000000;
-        border-top: 3px solid #1eb6e9;
-    }
+/*Footer */
+#footer {
+    clear: both;
+    text-align: center;
+    padding: 10px;
+    color: white;
+    background: #000000;
+    border-top: 3px solid #1eb6e9;
+}

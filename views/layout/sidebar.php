@@ -39,12 +39,12 @@
                 if (isset($_SESSION['rol'])) { 
                     if ($_SESSION['rol'] == "administrador"){ ?>
 
-                    <li><a href="<?= base_url ?>categoria/index">Gestionar categorias</a></li>
+                    <li><a href="<?= base_url ?>?controller=categoria&accion=index">Gestionar categorias</a></li>
                     <li><a href="<?= base_url ?>producto/gestion">Gestionar productos</a></li>
                     <li><a href="<?= base_url ?>pedido/gestion">Gestionar pedidos</a></li>
                     <li><a href="<?= base_url ?>?controller=usuario&accion=cerrarSession">Cerrar Session</a></li>
 
-                <?php } elseif ($_SESSION['rol'] == "usuario") { ?>   
+                <?php } if ($_SESSION['rol'] == "usuario") { ?>   
                     
                     <li><a href="<?= base_url ?>pedido/mis_pedidos">Mis pedidos</a></li> 
                     <li><a href="<?= base_url ?>?controller=usuario&accion=cerrarSession">Cerrar Session</a></li>  

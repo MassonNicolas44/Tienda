@@ -19,6 +19,11 @@
         </header>
         <!-- MENU -->
 
+<?php 
+require_once 'helper/utilidades.php';
+
+$categorias= utilidades::mostrarCategorias();  ?>
+
         <nav id="menu">
 
             <ul>
@@ -26,16 +31,16 @@
                     <a href="<?=base_url?>index.php">Inicio</a>
                 </li>
 
-                <li>
-                    <a href="#">Categoria 1</a>
-                </li>
+
+<?php while ($cate=$categorias->fetch_object()): ?>
 
                 <li>
-                    <a href="#">Categoria 2</a>
+                    <a href="#"><?=$cate->nombre?></a>
                 </li>
-                <li>
-                    <a href="<?=base_url?>?controller=usuario&accion=registrar">Registrar Usuario</a>
-                </li>
+
+                <?php  endwhile; ?>
+
+
 
 
             </ul>
