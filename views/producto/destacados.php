@@ -1,5 +1,5 @@
 
-<h1>Productos Destacados</h1>
+<h1>Alguno de nuestros productos</h1>
                 <div class="product">
                     <img src="img/tienda.jpg" alt="Imagen Tienda">
                     <h2>Mueble</h2>

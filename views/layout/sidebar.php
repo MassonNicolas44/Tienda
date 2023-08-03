@@ -40,7 +40,7 @@
                     if ($_SESSION['rol'] == "administrador"){ ?>
 
                     <li><a href="<?= base_url ?>?controller=categoria&accion=index">Gestionar categorias</a></li>
-                    <li><a href="<?= base_url ?>producto/gestion">Gestionar productos</a></li>
+                    <li><a href="<?= base_url ?>?controller=producto&accion=gestion">Gestionar productos</a></li>
                     <li><a href="<?= base_url ?>pedido/gestion">Gestionar pedidos</a></li>
                     <li><a href="<?= base_url ?>?controller=usuario&accion=cerrarSession">Cerrar Session</a></li>
 

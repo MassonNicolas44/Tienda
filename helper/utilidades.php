@@ -16,7 +16,7 @@ class utilidades
 	public static function esAdministrador()
 	{
 		if (!isset($_SESSION['rol'])) {
-			header("Location:" . base_url . "?controller=categoria&accion=crear");
+			header("Location:" . base_url);
 		} else {
 			return true;
 		}
