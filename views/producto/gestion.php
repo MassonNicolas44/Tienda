@@ -1,5 +1,4 @@
 <h1>Gestion Producto</h1>
-
 <a href="<?=base_url?>?controller=producto&accion=crear" class="button button-small">
 	Crear producto
 </a>

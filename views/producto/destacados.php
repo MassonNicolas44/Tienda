@@ -1,38 +1,27 @@
-
 <h1>Alguno de nuestros productos</h1>
-                <div class="product">
-                    <img src="img/tienda.jpg" alt="Imagen Tienda">
-                    <h2>Mueble</h2>
-                    <p>$10.000</p>
-                    <a href="index.php" class="button" >Mueble</a>
 
-                </div>
+<?php while ($azar = $productosAzar->fetch_object()): ?>
 
-                <div class="product">
+    <div class="product">
+        <a href="<?= base_url ?>?controller=producto&accion=ver&id=<?= $azar->id_Producto ?>">
+            <?php if ($azar->imagen != null) { ?>
+                <img src="<?= base_url ?>/uploads/imagenes/<?= $azar->imagen ?>" alt="Imagen Tienda" width="100" alt="200">
+            <?php } else { ?>
+                <img src="<?= base_url ?>/img/tienda.jpg" alt="Imagen Tienda" width="160" alt="">
+            <?php }
+            ; ?>
 
-                    <img src="img/tienda.jpg" alt="Imagen Tienda">
-                    <h2>Sillon</h2>
-                    <p>$5.000</p>
-                    <a href="index.php" class="button" >Sillon</a>
+            <h2>
+                <?= $azar->nombre ?>
+            </h2>
+        </a>
+        <p>
+            <?= "Precio: $" . $azar->precio ?>
+        </p>
+        <p>
+            <?= "Stock: " . $azar->stock . " Unidades" ?>
+        </p>
+        <a href="index.php" class="button">Mueble</a>
+    </div>
 
-                </div>
-
-                <div class="product">
-
-                    <img src="img/tienda.jpg" alt="Imagen Tienda">
-                    <h2>Silla</h2>
-                    <p>$2.000</p>
-                    <a href="index.php" class="button" >Silla</a>
-
-                </div>
-
-                <div class="product">
-
-                    <img src="img/tienda.jpg" alt="Imagen Tienda">
-                    <h2>Mesa</h2>
-                    <p>$1.000</p>
-                    <a href="index.php" class="button" >Mesa</a>
-
-                </div>
-
-        
+<?php endwhile; ?>

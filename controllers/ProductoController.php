@@ -7,6 +7,10 @@ class productoController
 
     public function index()
     {
+
+        $producto = new Producto;
+        $productosAzar = $producto->getAzar(6);
+
         require_once 'views/producto/destacados.php';
     }
 
@@ -25,6 +29,21 @@ class productoController
         utilidades::esAdministrador();
         require_once 'views/producto/crear.php';
     }
+
+    public function ver()
+    {
+        utilidades::esAdministrador();
+
+        if (isset($_GET['id'])) {
+
+            $id = $_GET['id'];
+            $producto = new Producto();
+            $producto->setId_Producto($id);
+            $traerProducto = $producto->getProducto();
+        }
+        require_once 'views/producto/ver.php';
+    }
+
 
     public function guardar()
     {
@@ -64,7 +83,7 @@ class productoController
                 }
 
                 if (isset($_GET['id'])) {
-                    $id=$_GET['id'];
+                    $id = $_GET['id'];
                     $producto->setId_Producto($id);
                     $guardar = $producto->editar();
                 } else {
@@ -97,8 +116,6 @@ class productoController
 
 
             require_once 'views/producto/crear.php';
-
-
 
         } else {
             header("Location:" . base_url . '?controller=producto&accion=gestion');

@@ -1,15 +1,15 @@
 <?php if (isset($editarProducto) && isset($traerProducto) && is_object($traerProducto)) { ?>
     <h1>Editar Producto "<?= $traerProducto->nombre ?>"</h1>
-    <?php $URLaccion = base_url . "controller=producto&accion=guardar&id=".$traerProducto->id_Producto ?>
+    <?php $URLaccion = base_url . "?controller=producto&accion=guardar&id=".$traerProducto->id_Producto ?>
 <?php } else { ?>
     <h1>Crear Nuevo Producto</h1>
-    <?php $URLaccion = base_url . "controller=producto&accion=guardar" ?>
+    <?php $URLaccion = base_url . "?controller=producto&accion=guardar" ?>
 <?php }
 ; ?>
 
 
 
-<form action="<? $URLaccion ?>" method="POST" enctype="multipart/form-data">
+<form action="<?= $URLaccion ?>" method="POST" enctype="multipart/form-data">
 
     <label>Nombre</label>
     <input type="text" name="nombre" style="width: 400px;" value="<?= isset($traerProducto) && is_object($traerProducto) ? $traerProducto->nombre : ''; ?>"> </br>
@@ -27,10 +27,11 @@
     <?php $mostrarCategoria = utilidades::mostrarCategorias(); ?>
     <Select name="categoria" style="width: 400px;">
         <?php while ($cate = $mostrarCategoria->fetch_object()): ?>
-            <option value="<?= $cate->id_Categoria ?>" value="<?= isset($traerProducto) && is_object($traerProducto) && ($cate->$id_Categoria==$traerProducto->id_Categoria)? 'selected' : false; ?>" >
+            <option value="<?= $cate->id_Categoria ?>" <?= isset($traerProducto) && is_object($traerProducto) && ($cate->id_Categoria==$traerProducto->id_Categoria)? 'selected' : ''; ?>>
                 <?= $cate->nombre ?>
-            </option>
+                    </option>
         <?php endwhile; ?>
+
     </Select> </br>
 
     <label for="imagen">Imagen</label> </br>

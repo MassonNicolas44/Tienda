@@ -95,10 +95,17 @@ class Producto
 		return $getProductos;
 	}
 
-	public function getAzar()
+
+	public function getProductosCategoria()
 	{
-		$getProducto = $this->bd->query("SELECT * FROM productos WHERE id_Producto={$this->getId_Producto()}");
-		return $getProducto->fetch_object();
+		$getProductosCategoria = $this->bd->query("SELECT P.*,C.nombre as CategoriaNombre FROM productos as P INNER JOIN categorias as C ON C.id_Categoria=P.id_Categoria WHERE P.id_categoria={$this->getId_Categoria()} ORDER BY id_Producto desc");
+		return $getProductosCategoria;
+	}
+
+	public function getAzar($limite)
+	{
+		$getAzar = $this->bd->query("SELECT * FROM productos ORDER BY RAND() LIMIT $limite");
+		return $getAzar;
 	}
 
 	public function getProducto()
@@ -134,7 +141,7 @@ class Producto
 			$sql .= ", imagen='{$this->getImagen()}'";
 		}
 		
-		$sql .= " WHERE id={$this->id_Producto};";
+		$sql .= " WHERE id_Producto={$this->id_Producto};";
 		
 		$editar = $this->bd->query($sql);
 

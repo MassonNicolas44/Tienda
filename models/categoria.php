@@ -38,6 +38,11 @@ public function getCategorias(){
     return $getCategorias;
 }
 
+public function getCategoria(){
+    $getCategoria=$this->bd->query("SELECT * FROM categorias WHERE id_Categoria={$this->getId()}");
+    return $getCategoria->fetch_object();
+}
+
 public function guardar(){
 
 	$sql = "INSERT INTO categorias VALUES(NULL, '{$this->getNombre()}');";
