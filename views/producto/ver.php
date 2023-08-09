@@ -4,25 +4,31 @@ if (isset($traerProducto)): ?>
         <?= $traerProducto->nombre ?>
     </h1>
 
-    <?php if ($traerProducto->imagen != null) { ?>
-        <img src="<?= base_url ?>/uploads/imagenes/<?= $traerProducto->imagen ?>" alt="Imagen Tienda" width="100" alt="200">
-    <?php } else { ?>
-        <img src="<?= base_url ?>/img/tienda.jpg" alt="Imagen Tienda" width="160" alt="">
-    <?php }
-    ; ?>
-
-    </a>
-    <p>
-        <?= "Descripcion:" . $traerProducto->descripcion ?>
-    </p>
-    <p>
-        <?= "Precio: $" . $traerProducto->precio ?>
-    </p>
-    <p>
-        <?= "Stock: " . $traerProducto->stock . " Unidades" ?>
-    </p>
-    <a href="index.php" class="button">Comprar</a>
-
+    <div id="VerProducto">
+        <div class="imagen">
+            <?php if ($traerProducto->imagen != null) { ?>
+                <img src="<?= base_url ?>/uploads/imagenes/<?= $traerProducto->imagen ?>" alt="Imagen Tienda" width="100"
+                    alt="200">
+            <?php } else { ?>
+                <img src="<?= base_url ?>/img/tienda.jpg" alt="Imagen Tienda" width="160" alt="">
+            <?php }
+            ; ?>
+        </div>
+        <div class="data">
+            </a>
+            <p class="descripcion">
+                <?= "Descripcion:" . $traerProducto->descripcion ?>
+            </p>
+            <p class="precio">
+                <?= "Precio: $" . $traerProducto->precio ?>
+            </p>
+            <p class="stock">
+                <?= "Stock: " . $traerProducto->stock . " Unidades" ?>
+            </p>
+            <a href="<?=base_url?>?controller=compra&accion=añadir&id=<?=$traerProducto->id_Producto?>" class="button">Comprar</a>
+        </div>
+    </div>
+    </div>
 <?php else: ?>
     <h1>El producto seleccionado no existe</h1>
 <?php endif; ?>

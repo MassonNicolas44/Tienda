@@ -3,6 +3,17 @@
 
 <div id="contenido">
     <aside id="barra">
+
+        <div id="compra" class="block_aside">
+
+            <h3>Lista de Compra</h3>
+            <ul>
+                <li><a href="<?=base_url?>?controller=compra&accion=index">Ver Compras</a></li>
+            </ul>
+
+        </div>
+
+
         <div id="login" class="block_aside">
 
             <?php
@@ -36,25 +47,27 @@
             <ul>
                 <?php
 
-                if (isset($_SESSION['rol'])) { 
-                    if ($_SESSION['rol'] == "administrador"){ ?>
+                if (isset($_SESSION['rol'])) {
+                    if ($_SESSION['rol'] == "administrador") { ?>
 
-                    <li><a href="<?= base_url ?>?controller=categoria&accion=index">Gestionar categorias</a></li>
-                    <li><a href="<?= base_url ?>?controller=producto&accion=gestion">Gestionar productos</a></li>
-                    <li><a href="<?= base_url ?>pedido/gestion">Gestionar pedidos</a></li>
-                    <li><a href="<?= base_url ?>?controller=usuario&accion=cerrarSession">Cerrar Session</a></li>
+                        <li><a href="<?= base_url ?>?controller=categoria&accion=index">Gestionar categorias</a></li>
+                        <li><a href="<?= base_url ?>?controller=producto&accion=gestion">Gestionar productos</a></li>
+                        <li><a href="<?= base_url ?>pedido/gestion">Gestionar pedidos</a></li>
+                        <li><a href="<?= base_url ?>?controller=usuario&accion=cerrarSession">Cerrar Session</a></li>
 
-                <?php } if ($_SESSION['rol'] == "usuario") { ?>   
-                    
-                    <li><a href="<?= base_url ?>pedido/mis_pedidos">Mis pedidos</a></li> 
-                    <li><a href="<?= base_url ?>?controller=usuario&accion=cerrarSession">Cerrar Session</a></li>  
+                    <?php }
+                    if ($_SESSION['rol'] == "usuario") { ?>
 
-                <?php }  } else{ ?>
-    
+                        <li><a href="<?= base_url ?>pedido/mis_pedidos">Mis pedidos</a></li>
+                        <li><a href="<?= base_url ?>?controller=usuario&accion=cerrarSession">Cerrar Session</a></li>
+
+                    <?php }
+                } else { ?>
+
                     <li><a href="<?= base_url ?>?controller=usuario&accion=registrar">Registrate aqui</a></li>
 
                 <?php } ?>
-                
+
             </ul>
         </div>
     </aside>

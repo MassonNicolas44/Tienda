@@ -21,7 +21,7 @@
         <p>
             <?= "Stock: " . $azar->stock . " Unidades" ?>
         </p>
-        <a href="index.php" class="button">Mueble</a>
+        <a href="index.php" class="button">Ver</a>
     </div>
 
 <?php endwhile; ?>
