@@ -216,7 +216,64 @@ button,
 .product h2 {
     font-size: 20px;
     margin-bottom: 8px;
+}
 
+.VerProducto{
+width: 100%;
+}
+
+#VerProducto{
+    width: 100%;
+}
+
+#VerProducto .imagen{
+    display: block;
+    width: 47%;
+    float:left;
+}
+
+#VerProducto img{
+    display: block;
+    width: 100%;
+    float:left;
+}
+
+#VerProducto .data{
+    width: 50%;
+    float:right;
+}
+
+#VerProducto .descripcion{
+    margin-bottom: 20px;
+}
+
+#VerProducto .precio{
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #444;
+}
+
+#VerProducto .stock{
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #444;
+}
+
+#VerProducto .button{
+    width: 200px;
+    text-align: center;
+}
+
+.imagen_compra{
+    height: 80px;
+    display: block;
+    margin:10px auto;
+}
+
+table{
+    text-align: center;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
 }
 
 /*Footer */
@@ -228,3 +285,52 @@ button,
     background: #000000;
     border-top: 3px solid #1eb6e9;
 }
+
+
+/*CARRITO*/
+.delete-carrito{
+    width: 295px;
+    float: left; 
+ }
+ 
+ .boton_Pedido-delete{
+     display: block;
+     float: left;
+     width: 100px;
+ }
+ 
+ .boton_Pedido-carrito{
+     width: 70px;
+     margin: 0px auto;
+     text-align: center;
+ }
+ 
+ .total_Compra{
+    width: 295px;
+    float: right; 
+ }
+ 
+ .total_Compra h3{
+     display: block;
+     float:left;
+     margin-top: 5px;
+ }
+ 
+ .boton_Pedido{
+     display: block;
+     float: right;
+     width: 100px;
+ }
+ 
+ .updown-unidades{
+     width: 80px;
+     margin: 0px auto;
+ }
+ 
+ .updown-unidades .button{
+     display: block;
+     width: 20px;
+     float: left;
+     padding:2px;
+     margin: 7px;
+ }
