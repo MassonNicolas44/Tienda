@@ -52,13 +52,13 @@
 
                         <li><a href="<?= base_url ?>?controller=categoria&accion=index">Gestionar categorias</a></li>
                         <li><a href="<?= base_url ?>?controller=producto&accion=gestion">Gestionar productos</a></li>
-                        <li><a href="<?= base_url ?>pedido/gestion">Gestionar pedidos</a></li>
+                        <li><a href="<?= base_url ?>?controller=pedido&accion=misPedidos">Gestionar pedidos</a></li>
                         <li><a href="<?= base_url ?>?controller=usuario&accion=cerrarSession">Cerrar Session</a></li>
 
                     <?php }
                     if ($_SESSION['rol'] == "usuario") { ?>
 
-                        <li><a href="<?= base_url ?>pedido/mis_pedidos">Mis pedidos</a></li>
+                        <li><a href="<?= base_url ?>?controller=pedido&accion=misPedidos">Mis pedidos</a></li>
                         <li><a href="<?= base_url ?>?controller=usuario&accion=cerrarSession">Cerrar Session</a></li>
 
                     <?php }

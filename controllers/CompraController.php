@@ -10,8 +10,6 @@ class compraController
 
     public function añadir()
     {
-
-
         if (isset($_GET['id'])) {
             $idProducto = $_GET['id'];
         } else {
@@ -23,7 +21,7 @@ class compraController
             $contador = 0;
             foreach ($_SESSION['compra'] as $indice => $elemento) {
                 if ($elemento['idProducto'] == $idProducto) {
-                    $_SESSION['compra'][$indice]['cantidad']++;
+                    $_SESSION['compra'][$indice]['unidades']++;
                     $contador++;
                 }
             }
@@ -37,7 +35,7 @@ class compraController
             $producto = $producto->getProducto();
 
             if (is_object($producto)) {
-                $_SESSION['compra'][] = array("idProducto" => $producto->id_Producto, "precio" => $producto->precio, "cantidad" => 1, "DatosProducto" => $producto);
+                $_SESSION['compra'][] = array("idProducto" => $producto->id_Producto, "precio" => $producto->precio, "unidades" => 1, "DatosProducto" => $producto);
             }
 
         }

@@ -202,7 +202,7 @@ button,
 
 /*Productos*/
 .product {
-    width: auto;
+    width: 30%;
     float: left;
     margin-left: 20px;
     text-align: center;

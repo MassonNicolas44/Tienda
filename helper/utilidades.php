@@ -22,6 +22,15 @@ class utilidades
 		}
 	}
 
+	public static function esUsuario()
+	{
+		if (!isset($_SESSION['rol'])) {
+			header("Location:" . base_url);
+		} else {
+			return true;
+		}
+	}
+
 	public static function mostrarCategorias()
 	{
 
