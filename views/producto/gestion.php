@@ -50,7 +50,7 @@
                 <?php echo $produ->descripcion; ?>
             </td>
             <td>
-                <?php echo $produ->precio; ?>
+                <?php echo $produ->precio; ?> $
             </td>
             <td>
                 <?php echo $produ->stock; ?>

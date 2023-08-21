@@ -39,7 +39,7 @@
 
 
                 <h3>
-                    <?php echo $_SESSION['identificacion']->nombre . " " . $_SESSION['identificacion']->apellido . " " . $_SESSION['rol'] ?>
+                    <?php echo $_SESSION['identificacion']->nombre . " " . $_SESSION['identificacion']->apellido ?>
                 </h3>
 
             <?php }

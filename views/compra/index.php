@@ -57,8 +57,8 @@
                 <td>
                     <?= $_SESSION['compra'][$indice]['unidades']; ?>
                     <div class="updown-unidades">
+                    <a href="<?= base_url ?>?controller=compra&accion=disminuir&index=<?= $indice ?>" class="button">-</a>
                         <a href="<?= base_url ?>?controller=compra&accion=aumentar&index=<?= $indice ?>" class="button">+</a>
-                        <a href="<?= base_url ?>?controller=compra&accion=disminuir&index=<?= $indice ?>" class="button">-</a>
                     </div>
                 </td>
 

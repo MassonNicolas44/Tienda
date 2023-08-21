@@ -2,7 +2,7 @@
 	<h1>Tu pedido ha sido confirmado</h1>
 	<p>
 		Tu pedido ha sido guardado con exito, una vez realizada la transferencia
-		bancaria a la cuenta ....... con el coste del pedido, será procesado y luego enviado.
+		bancaria a la cuenta ....... con el costo final del pedido, será procesado y luego enviado.
 	</p>
 	<br />
 

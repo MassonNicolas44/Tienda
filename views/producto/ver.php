@@ -7,10 +7,9 @@ if (isset($traerProducto)): ?>
     <div id="VerProducto">
         <div class="imagen">
             <?php if ($traerProducto->imagen != null) { ?>
-                <img src="<?= base_url ?>/uploads/imagenes/<?= $traerProducto->imagen ?>" alt="Imagen Tienda" width="100"
-                    alt="200">
+                <img src="<?= base_url ?>/uploads/imagenes/<?= $traerProducto->imagen ?>" alt="Imagen Tienda"  >
             <?php } else { ?>
-                <img src="<?= base_url ?>/img/tienda.jpg" alt="Imagen Tienda" width="160" alt="">
+                <img src="<?= base_url ?>/img/tienda.jpg" alt="Imagen Tienda" >
             <?php }
             ; ?>
         </div>

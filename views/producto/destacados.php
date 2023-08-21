@@ -5,7 +5,7 @@
     <div class="product">
         <a href="<?= base_url ?>?controller=producto&accion=ver&id=<?= $azar->id_Producto ?>">
             <?php if ($azar->imagen != null) { ?>
-                <img src="<?= base_url ?>/uploads/imagenes/<?= $azar->imagen ?>" alt="Imagen Tienda" width="230">
+                <img src="<?= base_url ?>/uploads/imagenes/<?= $azar->imagen ?>" alt="Imagen Tienda" >
             <?php } else { ?>
                 <img src="<?= base_url ?>/img/tienda.jpg" alt="Imagen Tienda"">
             <?php }

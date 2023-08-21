@@ -9,19 +9,23 @@ if (isset($gestion) && ($gestion==true)) { ?>
 <table>
     <tr>
         <th>Numero de Pedido</th>
+        <th>Id Usuario</th>
         <th>Costo Total</th>
         <th>Fecha</th>
         <th>Estado Pedido</th>
     </tr>
 
     <?php while ($ped = $pedidos->fetch_object()) {  
-    
         ?>
 
         <tr>
 
             <td>
                 <a href="<?= base_url ?>?controller=pedido&accion=detallePedido&id=<?= $ped->id_Pedido ?>"><?= $ped->id_Pedido ?></a>
+            </td>
+
+            <td>
+                <?= $ped->id_Usuario ?>
             </td>
 
             <td>

@@ -24,10 +24,10 @@
     <?= $pedido->provincia ?> </br>
     <em><u>Localidad:</u></em>
     <?= $pedido->localidad ?> </br>
-    <em><u>Codigo Postal:</u></em>
-    <?= $pedido->cp ?> </br>
     <em><u>Direccion:</u></em>
     <?= $pedido->direccion ?> </br>
+    <em><u>Codigo Postal:</u></em>
+    <?= $pedido->cp ?> </br>
     </br>
     <h3>Datos de Pedido:</h3>
     </br>

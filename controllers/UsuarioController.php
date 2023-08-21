@@ -19,8 +19,6 @@ class usuarioController
 
 		if (isset($_POST)) {
 
-
-
 			$nombre = isset($_POST['nombre']) ? $_POST['nombre'] : false;
 			$apellido = isset($_POST['apellido']) ? $_POST['apellido'] : false;
 			$email = isset($_POST['email']) ? $_POST['email'] : false;
@@ -54,18 +52,13 @@ class usuarioController
 	{
 
 		if (isset($_POST)) {
-
-
 			$usuario = new Usuario();
 			$usuario->setEmail($_POST['email']);
 			$usuario->setPassword($_POST['password']);
 			$identificacion = $usuario->login();
 
-
 			if ($identificacion==true && is_object($identificacion)) {
 				$_SESSION['identificacion'] = $identificacion;
-
-
 				if ($identificacion->rol == "administrador") {
 					$_SESSION['rol'] = "administrador";
 	
@@ -83,8 +76,6 @@ class usuarioController
 		}
 
 	}
-
-
 	
 	public function cerrarSession(){
 		//Borrar identificacion, siempre que exista
