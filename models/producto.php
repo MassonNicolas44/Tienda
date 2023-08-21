@@ -104,7 +104,7 @@ class Producto
 
 	public function getAzar($limite)
 	{
-		$getAzar = $this->bd->query("SELECT * FROM productos ORDER BY RAND() LIMIT $limite");
+		$getAzar = $this->bd->query("SELECT * FROM productos WHERE stock>0 ORDER BY RAND() LIMIT $limite");
 		return $getAzar;
 	}
 

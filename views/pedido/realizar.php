@@ -15,7 +15,7 @@
         <input type="text" name="localidad" required />
 
         <label>Codigo Postal</label>
-        <input type="text" name="CP" required />
+        <input type="text" name="cp" required />
 
         <label>Direccion</label>
         <input type="text" name="direccion" required />

@@ -1,4 +1,6 @@
-<?php if (isset($gestion)) { ?>
+<?php 
+
+if (isset($gestion) && ($gestion==true)) { ?>
     <h1>Gestion Pedidos</h1>
 <?php } else { ?>
     <h1>Mis Pedidos</h1>
@@ -12,20 +14,9 @@
         <th>Estado Pedido</th>
     </tr>
 
-    <?php
-    $_SESSION['PrecioTotal'] = 0;
-    $PrecioTotal = 0;
-    foreach ($_SESSION['compra'] as $producto):
-
-        $PrecioTotal += $producto['precio'] * $producto['cantidad'];
-
-    endforeach;
-
-    $_SESSION['PrecioTotal'] = $PrecioTotal;
-    ?>
-
-    <?php while ($ped = $todosPedidos->fetch_object()) { ?>
-
+    <?php while ($ped = $pedidos->fetch_object()) {  
+    
+        ?>
 
         <tr>
 
@@ -34,7 +25,7 @@
             </td>
 
             <td>
-                <?= $_SESSION['PrecioTotal'] ?>$
+                <?= $ped->costo ?>$
             </td>
             <td>
                 <?= $ped->fecha ?>

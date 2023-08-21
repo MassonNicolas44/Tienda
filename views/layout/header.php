@@ -12,7 +12,7 @@
         <!-- CABECERA -->
         <header id="header">
             <div id="imagen">
-                <img src="<?= base_url ?>img/tienda.jpg" alt="Imagen Tienda" width="160" alt="">
+                <img src="<?= base_url ?>img/tienda.jpg" alt="Imagen Tienda">
                 <a href="index.php">Tienda</a>
             </div>
 

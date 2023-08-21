@@ -18,7 +18,6 @@ class pedidoController
             $cp = isset($_POST['cp']) ? $_POST['cp'] : false;
             $direccion = isset($_POST['direccion']) ? $_POST['direccion'] : false;
 
-
             if ($provincia && $localidad && $cp && $direccion) {
                 $pedido = new Pedido();
                 $pedido->setId_Usuario($id_Usuario);
@@ -30,10 +29,13 @@ class pedidoController
 
                 $guardar = $pedido->guardar();
 
-                //$guardarLinea = $pedido->guardar_Pedido_Producto();
+                $guardarLinea = $pedido->guardar_Pedido_Producto();
 
-                if ($guardar) {
+                $actualizarStock=$pedido->actualizarStock();
+
+                if ($guardar && $guardarLinea && $actualizarStock) {
                     $_SESSION['pedido'] = "Completado";
+                    unset($_SESSION['compra']);
                 } else {
                     $_SESSION['pedido'] = "Fallo";
                 }
@@ -59,27 +61,35 @@ class pedidoController
             $pedido->setId_Usuario($identificacion->id_Usuario);
 
             $pedido = $pedido->getPedidoUsuario();
+
             $pedidoProductos = new Pedido();
 
-            var_dump($_GET['id']);
-
-var_dump($pedido->Id_Pedido);
-            
             $Productos = $pedidoProductos->getPedidoProductos($pedido->Id_Pedido);
+
         }
-        require_once 'view/pedido/confirmado.php';
+        require_once 'views/pedido/confirmado.php';
     }
 
     public function misPedidos()
     {
 
-        utilidades::esAdministrador();
+        if ($_SESSION['rol'] == "administrador") {
+            utilidades::esAdministrador();
+            $gestion = true;
 
-        $identificacion = $_SESSION['identificacion'];
-        $pedido = new Pedido();
-        $pedido->setId_Usuario($identificacion->id_Usuario);
+            $pedido = new Pedido();
+            $pedidos = $pedido->getPedidos();
+        }
+        
+        if ($_SESSION['rol'] == "usuario") {
+            utilidades::esUsuario();
+            $gestion = false;
+            $identificacion = $_SESSION['identificacion'];
+            $pedido = new Pedido();
+            $pedido->setId_Usuario($identificacion->id_Usuario);
 
-        $pedidos = $pedido->getTodoPedidoUsuario();
+            $pedidos = $pedido->getTodoPedidoUsuario();
+        }
 
         require_once 'views/pedido/misPedidos.php';
     }
@@ -102,22 +112,11 @@ var_dump($pedido->Id_Pedido);
             $pedidoProductos = new Pedido();
             $Productos = $pedidoProductos->getPedidoProductos($id);
 
-            require_once 'view/pedido/detallePedido.php';
+            require_once 'views/pedido/detallePedido.php';
 
         } else {
             header("Location:" . base_url . '?controller=pedido&accion=misPedidos');
         }
-    }
-
-    public function gestionPedidos()
-    {
-        utilidades::esAdministrador();
-        $gestion = true;
-
-        $pedido = new Pedido();
-        $todosPedidos = $pedido->getPedidos();
-
-        header("Location:" . base_url . '?controller=pedido&accion=misPedidos');
     }
 
     public function estadoPedido()
@@ -126,15 +125,15 @@ var_dump($pedido->Id_Pedido);
 
         if (isset($_POST['Id_Pedido']) && isset($_POST['estadoPedido'])) {
 
-            $id=$_POST['Id_Pedido'];
-            $estado=$_POST['estadoPedido'];
+            $id = $_POST['Id_Pedido'];
+            $estado = $_POST['estadoPedido'];
 
-            $pedido=new Pedido();
+            $pedido = new Pedido();
             $pedido->setId_Pedido($id);
             $pedido->setEstado($estado);
             $pedido->actualizarPedido();
 
-            header("Location:" . base_url . '?controller=pedido&accion=detallePedido&id='.$id);
+            header("Location:" . base_url . '?controller=pedido&accion=detallePedido&id=' . $id);
         } else {
             header("Location:" . base_url . '?controller=pedido&accion=misPedidos');
         }

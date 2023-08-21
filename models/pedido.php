@@ -176,9 +176,10 @@ class Pedido
 
 	public function getPedidoProductos($IdPedido)
 	{
-		$getPedidoProducto = $this->bd->query("SELECT pr.*, pp.unidades FROM productos as pr INNER JOIN pedidos_productos as pp ON pr.id_Producto=pp.id_Producto where pp.id_Producto={$IdPedido})");	
+		$sql = "SELECT pr.*, pp.unidades FROM productos as pr INNER JOIN pedidos_productos as pp ON pr.id_Producto=pp.id_Producto where pp.id_Pedido={$IdPedido}";
+		$getPedidoProductos = $this->bd->query($sql);
 
-		return $getPedidoProducto;
+		return $getPedidoProductos;
 	}
 
 	public function guardar()
@@ -186,11 +187,6 @@ class Pedido
 
 		$sql = "INSERT INTO pedidos VALUES(NULL, {$this->getId_Usuario()},'{$this->getProvincia()}','{$this->getLocalidad()}','{$this->getCp()}','{$this->getDireccion()}','{$this->getCosto()}','Confirmado',CURDATE(),CURTIME());";
 		$guardar = $this->bd->query($sql);
-
-		//Mostrar error
-		//echo $sql;
-		//echo $this->bd->error;
-		//die();
 
 		$resultado = false;
 		if ($guardar) {
@@ -207,13 +203,16 @@ class Pedido
 		$query = $this->bd->query($sql);
 		$pedido_id = $query->fetch_object()->UltimoIdPedido;
 
-		foreach ($_SESSION['compra'] as $elemento) {
+		foreach ($_SESSION['compra'] as $indice => $elemento) {
+
 			$producto = $elemento['DatosProducto'];
 
-			$insertar = "INSERT INTO pedidos-productos VALUES(NULL,{$pedido_id},{$producto->Id_Producto},{$producto['unidades']}";
+			$insertar = "INSERT INTO pedidos_productos VALUES(NULL,{$pedido_id},{$producto->id_Producto},'{$_SESSION['compra'][$indice]['unidades']}')";
+
 			$guardar = $this->bd->query($insertar);
 
 		}
+
 		$resultado = false;
 		if ($guardar) {
 			$resultado = true;
@@ -221,9 +220,30 @@ class Pedido
 		return $resultado;
 	}
 
-	public function actualizarPedido(){
+
+	public function actualizarStock()
+	{
+
+		foreach ($_SESSION['compra'] as $indice => $elemento) {
+
+			$actualizarStock = "UPDATE productos SET stock='{$_SESSION['compra'][$indice]['stock']}' WHERE Id_Producto={$_SESSION['compra'][$indice]['idProducto']} ";
+
+			$actualizarStock = $this->bd->query($actualizarStock);
+
+		}
+
+		$resultado = false;
+		if ($actualizarStock) {
+			$resultado = true;
+		}
+		return $resultado;
+	}
+
+
+	public function actualizarPedido()
+	{
 		$sql = "UPDATE pedidos SET estado='{$this->getEstado()}' WHERE Id_Pedido={$this->getId_Pedido()} ";
-				
+
 		$editar = $this->bd->query($sql);
 
 		//Mostrar error

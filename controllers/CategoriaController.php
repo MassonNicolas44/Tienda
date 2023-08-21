@@ -32,9 +32,6 @@ class categoriaController
             $producto->setId_Categoria($id);
             $productos = $producto->getProductosCategoria();
 
-
-
-
         }
 
         require_once 'views/categoria/ver.php';

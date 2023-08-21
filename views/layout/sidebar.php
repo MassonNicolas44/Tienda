@@ -4,6 +4,8 @@
 <div id="contenido">
     <aside id="barra">
 
+<?php if ((isset($_SESSION['rol'])) && $_SESSION['rol'] == "usuario") { ?>
+
         <div id="compra" class="block_aside">
 
             <h3>Lista de Compra</h3>
@@ -13,7 +15,7 @@
 
         </div>
 
-
+<?php };?>
         <div id="login" class="block_aside">
 
             <?php

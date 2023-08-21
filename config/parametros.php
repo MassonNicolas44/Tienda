@@ -1,6 +1,6 @@
 <?php 
 //URL BASE
-define("base_url","http://192.168.0.187/Tienda/");
+define("base_url","http://localhost/Tienda/");
 //Controlador por defecto
 define("controlador_base","productoController");
 //Accion por defecto

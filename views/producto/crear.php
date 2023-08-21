@@ -36,7 +36,7 @@
 
     <label for="imagen">Imagen</label> </br>
     <?php if(isset($traerProducto) && is_object($traerProducto) && !empty($traerProducto->imagen)): ?>
-			<img src="<?=base_url?>uploads/imagenes/<?=$traerProducto->imagen?>" width="160" alt="" /> 
+			<img src="<?=base_url?>uploads/imagenes/<?=$traerProducto->imagen?>" class="thumb" /> 
 		<?php endif; ?>
     <input type="file" name="imagen"> </br>
 
