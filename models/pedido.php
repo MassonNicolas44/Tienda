@@ -244,7 +244,7 @@ class Pedido
 	{
 		$sql = "UPDATE pedidos SET estado='{$this->getEstado()}' WHERE Id_Pedido={$this->getId_Pedido()} ";
 
-		$editar = $this->bd->query($sql);
+		$actualizarPedido = $this->bd->query($sql);
 
 		//Mostrar error
 		//echo $sql;
@@ -252,7 +252,37 @@ class Pedido
 		//die();
 
 		$resultado = false;
-		if ($editar) {
+		if ($actualizarPedido) {
+			$resultado = true;
+		}
+		return $resultado;
+	}
+
+	public function devolucionPedido()
+	{
+
+		foreach ($_SESSION['devolucion'] as $indice => $elemento) {
+
+			$idProducto=$_SESSION['devolucion'][$indice]['idProducto'];
+			$unidadesPedido = $_SESSION['devolucion'][$indice]['unidades'];
+			$unidadeStockInicial = $_SESSION['devolucion'][$indice]['stock'];
+
+			$unidadesStockFinal = $unidadesPedido + $unidadeStockInicial;
+
+			$devolucionStock = "UPDATE productos SET stock='{$unidadesStockFinal}' WHERE Id_Producto={$idProducto} ";
+
+			$devolucionStock = $this->bd->query($devolucionStock);
+
+		}
+
+		unset($_SESSION['devolucion']);
+
+		$sql = "UPDATE pedidos SET estado='{$this->getEstado()}' WHERE Id_Pedido={$this->getId_Pedido()} ";
+
+		$devolucionPedido = $this->bd->query($sql);
+
+		$resultado = false;
+		if ($devolucionPedido && $devolucionStock) {
 			$resultado = true;
 		}
 		return $resultado;

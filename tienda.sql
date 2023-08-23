@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-08-2023 a las 22:17:34
+-- Tiempo de generación: 23-08-2023 a las 04:25:54
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -73,8 +73,8 @@ INSERT INTO `pedidos` (`id_Pedido`, `id_Usuario`, `provincia`, `localidad`, `cp`
 (48, 9, 'Olavarria', 'Olavarria', 7400, 'Collinet', 6100.00, 'Confirmado', '2023-08-19', '23:29:25'),
 (49, 9, 'Olavarria', 'Olavarria', 7400, 'Collinet', 6100.00, 'Confirmado', '2023-08-19', '23:43:54'),
 (50, 9, 'Olavarria', 'Olavarria', 7400, 'Collinet', 600.00, 'Confirmado', '2023-08-20', '20:32:57'),
-(51, 9, 'Olavarria', 'Olavarria', 7400, 'Collinet', 2800.00, 'Confirmado', '2023-08-21', '14:57:38'),
-(52, 14, 'Buenos Aires', 'Olavarria', 7400, 'Avenida Pringles 3502', 37000.00, 'Confirmado', '2023-08-21', '17:13:28');
+(51, 9, 'Olavarria', 'Olavarria', 7400, 'Collinet', 2800.00, 'Devolucion Pedido', '2023-08-21', '14:57:38'),
+(52, 14, 'Buenos Aires', 'Olavarria', 7400, 'Avenida Pringles 3502', 37000.00, 'Devolucion Pedido', '2023-08-21', '17:13:28');
 
 -- --------------------------------------------------------
 
@@ -137,13 +137,13 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id_Producto`, `id_Categoria`, `nombre`, `descripcion`, `precio`, `stock`, `fecha`, `imagen`) VALUES
-(5, 2, 'Silla Escritorio', ' Excelente silla para escritorios modernos', 300.00, 3, '0000-00-00', 'SillaEscritorio.jpg'),
-(6, 2, 'Silla Moderna', ' Buenísima silla para un Comedor grande', 600.00, 4, '0000-00-00', 'SillaModerna.jpg'),
-(15, 1, 'Mesa Oficina', '    Excelente Mesa para oficina', 200.00, 2, '2023-08-05', 'MesaOficina.jpg'),
-(16, 4, 'Bajo Mesada', '    Bajo Mesada para Laboratorio', 600.00, 6, '2023-08-05', 'BajoMesada.jpg'),
-(17, 10, 'Parlante JBL', 'Parlante para Fiesta ', 5000.00, 3, '2023-08-21', 'parlante.jpg'),
+(5, 2, 'Silla Escritorio', ' Excelente silla para escritorios modernos', 300.00, 7, '0000-00-00', 'SillaEscritorio.jpg'),
+(6, 2, 'Silla Moderna', ' Buenísima silla para un Comedor grande', 600.00, 8, '0000-00-00', 'SillaModerna.jpg'),
+(15, 1, 'Mesa Oficina', '    Excelente Mesa para oficina', 200.00, 10, '2023-08-05', 'MesaOficina.jpg'),
+(16, 4, 'Bajo Mesada', '    Bajo Mesada para Laboratorio', 600.00, 10, '2023-08-05', 'BajoMesada.jpg'),
+(17, 10, 'Parlante JBL', 'Parlante para Fiesta ', 5000.00, 10, '2023-08-21', 'parlante.jpg'),
 (18, 3, 'Mueble Pared', ' Mueble para comedor', 10000.00, 3, '2023-08-21', 'Mueble.jpg'),
-(19, 8, 'Escritorio Pc', 'Pc Oficina ', 500.00, 3, '2023-08-21', 'Escritorio.jpg');
+(19, 8, 'Escritorio Pc', 'Pc Oficina ', 500.00, 5, '2023-08-21', 'Escritorio.jpg');
 
 -- --------------------------------------------------------
 

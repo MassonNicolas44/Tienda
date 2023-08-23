@@ -31,7 +31,7 @@ class pedidoController
 
                 $guardarLinea = $pedido->guardar_Pedido_Producto();
 
-                $actualizarStock=$pedido->actualizarStock();
+                $actualizarStock = $pedido->actualizarStock();
 
                 if ($guardar && $guardarLinea && $actualizarStock) {
                     $_SESSION['pedido'] = "Completado";
@@ -80,7 +80,7 @@ class pedidoController
             $pedido = new Pedido();
             $pedidos = $pedido->getPedidos();
         }
-        
+
         if ($_SESSION['rol'] == "usuario") {
             utilidades::esUsuario();
             $gestion = false;
@@ -131,12 +131,25 @@ class pedidoController
             $pedido = new Pedido();
             $pedido->setId_Pedido($id);
             $pedido->setEstado($estado);
-            $pedido->actualizarPedido();
 
-            header("Location:" . base_url . '?controller=pedido&accion=detallePedido&id=' . $id);
-        } else {
-            header("Location:" . base_url . '?controller=pedido&accion=misPedidos');
-        }
+            if ($_POST['estadoPedido'] == "Devolucion Pedido") {
+
+                $traerProductos = $pedido->getPedidoProductos($id);
+
+                while ($producto = $traerProductos->fetch_object()) {
+                    $_SESSION['devolucion'][] = array("idProducto" => $producto->id_Producto, "unidades" => $producto->unidades, "stock" => $producto->stock);
+                }
+
+                $pedido->devolucionPedido();
+            } else {
+                $pedido->actualizarPedido();
+            }
+
+            unset($_SESSION['devolucion']);
+
+        } 
+
+        header("Location:" . base_url . '?controller=pedido&accion=misPedidos');
 
     }
 }

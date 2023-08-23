@@ -8,16 +8,42 @@
         <form action="<?= base_url ?>?controller=pedido&accion=estadoPedido" method="POST">
             <input type="hidden" value="<?= $pedido->id_Pedido ?>" name="Id_Pedido">
             <select name="estadoPedido">
-                <option value="Confirmado" <?= $pedido->estado == "Confirmado" ? 'selected' : '' ?>>Confirmado</option>
-                <option value="Preparacion" <?= $pedido->estado == "Preparacion" ? 'selected' : '' ?>>En preparacion</option>
-                <option value="Listo" <?= $pedido->estado == "Listo" ? 'selected' : '' ?>>Listo para enviar</option>
-                <option value="Enviado" <?= $pedido->estado == "Enviado" ? 'selected' : '' ?>>Enviado</option>
+
+
+                <?php if ($pedido->estado == "Devolucion Pedido") {
+                    ?>
+
+                    <option value="Devolucion Pedido" <?= $pedido->estado == "Devolucion Pedido" ? 'selected' : '' ?> disabled>
+                        Devolucion Pedido
+                    </option>
+
+                    <?php
+                } else {
+                    ?>
+
+                    <option value="Confirmado" <?= $pedido->estado == "Confirmado" ? 'selected' : '' ?>>Confirmado</option>
+                    <option value="En preparacion" <?= $pedido->estado == "En preparacion" ? 'selected' : '' ?>>En preparacion</option>
+                    <option value="Listo para enviar" <?= $pedido->estado == "Listo para enviar" ? 'selected' : '' ?>>Listo para enviar</option>
+                    <option value="Enviado" <?= $pedido->estado == "Enviado" ? 'selected' : '' ?>>Enviado</option>
+                    <option value="" <?= $pedido->estado == "" ? 'selected' : '' ?> disabled>
+                        ------------------------------------------------</option>
+                    <option value="Devolucion Pedido" <?= $pedido->estado == "Devolucion Pedido" ? 'selected' : '' ?>>Devolucion Pedido
+                    </option>
+
+                    <?php
+
+                }
+                ;
+                ?>
+
             </select>
-            <input type="submit" value="Cambiar estado pedido" />
+            <input type="submit" <?php if ($pedido->estado == "Devolucion Pedido") {?> disabled <?php
+            } else { } ?> enabled
+                value="Cambiar estado pedido" />
         </form>
     <?php }
     ; ?>
-
+    </br>
     <h3>Datos de Envio</h3>
     </br>
     <em><u>Provincia:</u></em>
@@ -45,9 +71,9 @@
         <ul>
             <li>
                 <b>Nombre:</b>
-                <?= $producto->nombre ?> ---- 
+                <?= $producto->nombre ?> ----
                 <b>Precio:</b>
-                <?= $producto->precio ?> $ ---- 
+                <?= $producto->precio ?> $ ----
                 <b>Cantidad:</b>
                 <?= $producto->unidades ?>
             </li>
