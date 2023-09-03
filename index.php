@@ -18,9 +18,9 @@ function mostrarError()
 if (isset($_GET['controller'])) {
     //se genera la variable en caso que si llega
     $nom_controlador = $_GET['controller'] . 'Controller';
-}elseif(!isset($_GET['controller']) && !isset($_GET['accion'])){
-$nom_controlador=controlador_base;
-}  else {
+} elseif (!isset($_GET['controller']) && !isset($_GET['accion'])) {
+    $nom_controlador = controlador_base;
+} else {
     mostrarError();
     exit();
 }
@@ -36,12 +36,10 @@ if (class_exists($nom_controlador)) {
         //Se invoca el metodo
         $accion = $_GET['accion'];
         $controlador->$accion();
-    }elseif(!isset($_GET['controller']) && !isset($_GET['accion'])){
-        $accionBase=accion_base;
+    } elseif (!isset($_GET['controller']) && !isset($_GET['accion'])) {
+        $accionBase = accion_base;
         $controlador->$accionBase();
-        }
-    
-    else {
+    } else {
         mostrarError();
     }
 } else {

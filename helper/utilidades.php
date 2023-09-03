@@ -3,6 +3,7 @@
 class utilidades
 {
 
+	//Borrar Session
 	public static function borrarSession($nombre)
 	{
 		if (isset($_SESSION[$nombre])) {
@@ -13,6 +14,8 @@ class utilidades
 		return $nombre;
 	}
 
+	//Verificacion de administrador
+
 	public static function esAdministrador()
 	{
 		if (!isset($_SESSION['rol'])) {
@@ -22,6 +25,8 @@ class utilidades
 		}
 	}
 
+	//Verificacion de usuario
+
 	public static function esUsuario()
 	{
 		if (!isset($_SESSION['rol'])) {
@@ -30,6 +35,8 @@ class utilidades
 			return true;
 		}
 	}
+
+	//Mostrar las categorias en la aprte superior de la pagina
 
 	public static function mostrarCategorias()
 	{

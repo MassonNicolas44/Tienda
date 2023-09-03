@@ -16,9 +16,13 @@
         $_SESSION['PrecioTotal'] = 0;
         $PrecioTotal = 0;
 
+//Recorre la session de compra y va calculando el precio total de cada producto (Cantidad x Precio)
+
         foreach ($_SESSION['compra'] as $producto):
             $PrecioTotal += $producto['precio'] * $producto['unidades'];
         endforeach;
+
+//Recorre la session de compra y asigna a las variables los valores que va recolectando
 
         foreach ($_SESSION['compra'] as $indice => $elemento):
 
@@ -32,16 +36,21 @@
         $_SESSION['PrecioTotal'] = $PrecioTotal;
         ?>
 
-        <?php foreach ($_SESSION['compra'] as $indice => $elemento):
-            $producto = $elemento['DatosProducto'];             
-            
+        <?php 
+        
+        //Recorre la session de compra y va mostrando los productos a comprar, junto con sus cantidades, precio y stock del mismo
+
+        foreach ($_SESSION['compra'] as $indice => $elemento):
+            $producto = $elemento['DatosProducto'];
+
             ?>
 
             <tr>
 
                 <td>
                     <?php if ($producto->imagen != null) { ?>
-                        <img src="<?= base_url ?>/uploads/imagenes/<?= $producto->imagen ?>" alt="Imagen Tienda" class="imagen_compra">
+                        <img src="<?= base_url ?>/uploads/imagenes/<?= $producto->imagen ?>" alt="Imagen Tienda"
+                            class="imagen_compra">
                     <?php } else { ?>
                         <img src="<?= base_url ?>/img/tienda.jpg" alt="Imagen Tienda" class="imagen_compra">
                     <?php }
@@ -57,7 +66,7 @@
                 <td>
                     <?= $_SESSION['compra'][$indice]['unidades']; ?>
                     <div class="updown-unidades">
-                    <a href="<?= base_url ?>?controller=compra&accion=disminuir&index=<?= $indice ?>" class="button">-</a>
+                        <a href="<?= base_url ?>?controller=compra&accion=disminuir&index=<?= $indice ?>" class="button">-</a>
                         <a href="<?= base_url ?>?controller=compra&accion=aumentar&index=<?= $indice ?>" class="button">+</a>
                     </div>
                 </td>
@@ -97,6 +106,9 @@
         <?php
 
         $valorStock = true;
+
+//Recorre la session de compra y verifica que las unidades a comprar sea menor o igual al stock del producto. Caso contrario no deja Finalizar el pedido
+
         foreach ($_SESSION['compra'] as $indice => $elemento):
             if ($_SESSION['compra'][$indice]['stock'] < 0) {
                 $valorStock = false;

@@ -20,9 +20,9 @@
         <label>Direccion</label>
         <input type="text" name="direccion" required />
 
-        <input type="submit" value="Finalizar Pedido"/>
+        <input type="submit" value="Finalizar Pedido" />
 
-</form>
+    </form>
 
 <?php } else { ?>
     <h1>Necesita estar Identificado para poder finalizar tu pedido</h1>

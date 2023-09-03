@@ -9,23 +9,23 @@
 	<?php if (isset($pedido)) { ?>
 		<h3>Datos de Pedido:</h3>
 
-		<em><u>Numero Pedido:</em></u> <?= $pedido->Id_Pedido ?> <br />
-		<em><u>Total a Pagar:</em></u> <?= $pedido->Costo ?> $ <br />
+		<em><u>Numero Pedido:</em></u>
+		<?= $pedido->Id_Pedido ?> <br />
+		<em><u>Total a Pagar:</em></u>
+		<?= $pedido->Costo ?> $ <br />
 		<em><u>Productos:</em></u>
 		<br /><br />
 
-		<?php while ($producto = $Productos->fetch_object()) 
-					
-		{
+		<?php while ($producto = $Productos->fetch_object()) {
 			?>
 			<ul>
 				<li>
-				<b>Nombre:</b>
-                <?= $producto->nombre ?> ---- 
-                <b>Precio:</b>
-                <?= $producto->precio ?> $ ---- 
-                <b>Cantidad:</b>
-                <?= $producto->unidades ?>
+					<b>Nombre:</b>
+					<?= $producto->nombre ?> ----
+					<b>Precio:</b>
+					<?= $producto->precio ?> $ ----
+					<b>Cantidad:</b>
+					<?= $producto->unidades ?>
 				</li>
 			</ul>
 

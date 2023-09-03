@@ -34,7 +34,7 @@
                 <?php while ($cate = $categorias->fetch_object()): ?>
 
                     <li>
-                        <a href="<?= base_url ?>?controller=categoria&accion=ver&id=<?=$cate->id_Categoria?>"><?= $cate->nombre ?></a>
+                        <a href="<?= base_url ?>?controller=categoria&accion=ver&id=<?= $cate->id_Categoria ?>"><?= $cate->nombre ?></a>
                     </li>
 
                 <?php endwhile; ?>

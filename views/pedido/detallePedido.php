@@ -10,7 +10,10 @@
             <select name="estadoPedido">
 
 
-                <?php if ($pedido->estado == "Devolucion Pedido") {
+                <?php
+                //En caso que el estado del pedido sea "Devolucion Pedido", no se podra volver a modificar el estado del mismo
+                //Se podra ver los detalles del pedido solamente
+                if ($pedido->estado == "Devolucion Pedido") {
                     ?>
 
                     <option value="Devolucion Pedido" <?= $pedido->estado == "Devolucion Pedido" ? 'selected' : '' ?> disabled>
@@ -23,7 +26,8 @@
 
                     <option value="Confirmado" <?= $pedido->estado == "Confirmado" ? 'selected' : '' ?>>Confirmado</option>
                     <option value="En preparacion" <?= $pedido->estado == "En preparacion" ? 'selected' : '' ?>>En preparacion</option>
-                    <option value="Listo para enviar" <?= $pedido->estado == "Listo para enviar" ? 'selected' : '' ?>>Listo para enviar</option>
+                    <option value="Listo para enviar" <?= $pedido->estado == "Listo para enviar" ? 'selected' : '' ?>>Listo para enviar
+                    </option>
                     <option value="Enviado" <?= $pedido->estado == "Enviado" ? 'selected' : '' ?>>Enviado</option>
                     <option value="" <?= $pedido->estado == "" ? 'selected' : '' ?> disabled>
                         ------------------------------------------------</option>
@@ -37,8 +41,9 @@
                 ?>
 
             </select>
-            <input type="submit" <?php if ($pedido->estado == "Devolucion Pedido") {?> disabled <?php
-            } else { } ?> enabled
+            <input type="submit" <?php if ($pedido->estado == "Devolucion Pedido") { ?> disabled <?php
+            } else {
+            } ?> enabled
                 value="Cambiar estado pedido" />
         </form>
     <?php }

@@ -1,5 +1,7 @@
 <?php
 
+//Conectar Base de datos
+
 class Database{
     public static function conectar(){
         $bd=new mysqli('localhost','root','','tienda');

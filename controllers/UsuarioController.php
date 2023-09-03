@@ -4,15 +4,14 @@ require_once 'models/usuario.php';
 class usuarioController
 {
 
-	public function index()
-	{
-		echo "Controlador Usuarios, Accion index";
-	}
+	//Pagina para registrar un nuevo Usuario
 
 	public function registrar()
 	{
 		require_once 'views/usuario/registrar.php';
 	}
+
+	//Guardar el nuevo usuario en la Base de Datos, con sus correspondientes datos
 
 	public function guardar()
 	{
@@ -48,6 +47,10 @@ class usuarioController
 		header("Location:" . base_url . '?controller=usuario&accion=registrar');
 
 	}
+
+	//Comprobacion de los datos ingresados por el usuario, coincidan con los de la Base de Datos, luego que coincida
+//le asigna a la session el rol de Administrador o Usuario
+
 	public function login()
 	{
 
@@ -57,14 +60,14 @@ class usuarioController
 			$usuario->setPassword($_POST['password']);
 			$identificacion = $usuario->login();
 
-			if ($identificacion==true && is_object($identificacion)) {
+			if ($identificacion == true && is_object($identificacion)) {
 				$_SESSION['identificacion'] = $identificacion;
 				if ($identificacion->rol == "administrador") {
 					$_SESSION['rol'] = "administrador";
-	
+
 				} elseif ($identificacion->rol == "usuario") {
 					$_SESSION['rol'] = "usuario";
-				
+
 				}
 
 			} else {
@@ -72,19 +75,20 @@ class usuarioController
 			}
 
 
-			header("Location:" .base_url);
+			header("Location:" . base_url);
 		}
 
 	}
-	
-	public function cerrarSession(){
+
+	public function cerrarSession()
+	{
 		//Borrar identificacion, siempre que exista
 
-			unset($_SESSION['identificacion']);
+		unset($_SESSION['identificacion']);
 
-			//Borrar rol usuario, siempre que exista
+		//Borrar rol usuario, siempre que exista
 
-			unset($_SESSION['rol']);
+		unset($_SESSION['rol']);
 
 		header("Location:" . base_url);
 

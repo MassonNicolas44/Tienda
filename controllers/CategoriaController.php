@@ -7,6 +7,8 @@ require_once 'helper/utilidades.php';
 class categoriaController
 {
 
+    //Trae desde la Base de Datos todas las categorias creadas
+
     public function index()
     {
         utilidades::esAdministrador();
@@ -14,6 +16,8 @@ class categoriaController
         $categorias = $categoria->getCategorias();
         require_once 'views/categoria/index.php';
     }
+
+    //Trae desde la Base de Datos primero la categoria seleccionada y luego los productos de la categoria misma
 
     public function ver()
     {
@@ -37,11 +41,15 @@ class categoriaController
         require_once 'views/categoria/ver.php';
     }
 
+    //Pagina para agregar una categoria
+
     public function crear()
     {
         utilidades::esAdministrador();
         require_once 'views/categoria/crear.php';
     }
+
+    //Agrega una nueva categoria a la Base de Datos
 
     public function guardar()
     {

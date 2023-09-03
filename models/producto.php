@@ -89,12 +89,15 @@ class Producto
 		$this->imagen = $imagen;
 	}
 
+	//Consulta para traer todos los productos ordenados por Id de manera descendiente
+
 	public function getProductos()
 	{
 		$getProductos = $this->bd->query("SELECT * FROM productos ORDER BY id_Producto desc");
 		return $getProductos;
 	}
 
+	//Consulta para traer todos los productos de una categoria
 
 	public function getProductosCategoria()
 	{
@@ -102,17 +105,23 @@ class Producto
 		return $getProductosCategoria;
 	}
 
+	//Consulta para traer productos al azar
+
 	public function getAzar($limite)
 	{
 		$getAzar = $this->bd->query("SELECT * FROM productos WHERE stock>0 ORDER BY RAND() LIMIT $limite");
 		return $getAzar;
 	}
 
+	//Consulta para traer los datos de un producto seleccionado
+
 	public function getProducto()
 	{
 		$getProducto = $this->bd->query("SELECT * FROM productos WHERE id_Producto={$this->getId_Producto()}");
 		return $getProducto->fetch_object();
 	}
+
+	//Agregar un nuevo producto
 
 	public function guardar()
 	{
@@ -132,17 +141,19 @@ class Producto
 		return $resultado;
 	}
 
+	//Editar un producto seleccionado
+
 	public function editar()
 	{
 
 		$sql = "UPDATE productos SET id_Categoria='{$this->getId_Categoria()}',nombre='{$this->getNombre()}',descripcion='{$this->getDescripcion()}',precio='{$this->getPrecio()}',stock='{$this->getStock()}' ";
-		
-		if($this->getImagen() != null){
+
+		if ($this->getImagen() != null) {
 			$sql .= ", imagen='{$this->getImagen()}'";
 		}
-		
+
 		$sql .= " WHERE id_Producto={$this->id_Producto};";
-		
+
 		$editar = $this->bd->query($sql);
 
 		//Mostrar error
@@ -157,7 +168,10 @@ class Producto
 		return $resultado;
 	}
 
-	public function eliminar(){
+	//Eliminar un producto eleccionado
+
+	public function eliminar()
+	{
 
 		$sql = "DELETE FROM productos WHERE id_Producto={$this->id_Producto}";
 		$eliminar = $this->bd->query($sql);

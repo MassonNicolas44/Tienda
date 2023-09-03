@@ -8,12 +8,12 @@ class Categoria
 	private $nombre;
 	private $bd;
 
-    public function __construct()
+	public function __construct()
 	{
 		$this->bd = Database::conectar();
 	}
 
-    function getId()
+	function getId()
 	{
 		return $this->id;
 	}
@@ -33,27 +33,36 @@ class Categoria
 		$this->nombre = $this->bd->real_escape_string($nombre);
 	}
 
-public function getCategorias(){
-    $getCategorias=$this->bd->query("SELECT * FROM categorias ORDER BY id_Categoria desc");
-    return $getCategorias;
-}
+	//Consulta para traer todas las categorias ordenas por el Id de manera descendiente
 
-public function getCategoria(){
-    $getCategoria=$this->bd->query("SELECT * FROM categorias WHERE id_Categoria={$this->getId()}");
-    return $getCategoria->fetch_object();
-}
-
-public function guardar(){
-
-	$sql = "INSERT INTO categorias VALUES(NULL, '{$this->getNombre()}');";
-	$guardar = $this->bd->query($sql);
-
-	$resultado = false;
-	if ($guardar) {
-		$resultado = true;
+	public function getCategorias()
+	{
+		$getCategorias = $this->bd->query("SELECT * FROM categorias ORDER BY id_Categoria desc");
+		return $getCategorias;
 	}
-	return $resultado;
-}
+
+	//Consulta para traer todos los datos de una categoria en particular
+
+	public function getCategoria()
+	{
+		$getCategoria = $this->bd->query("SELECT * FROM categorias WHERE id_Categoria={$this->getId()}");
+		return $getCategoria->fetch_object();
+	}
+
+	//Agregar 1 categoria a la Base de Datos
+
+	public function guardar()
+	{
+
+		$sql = "INSERT INTO categorias VALUES(NULL, '{$this->getNombre()}');";
+		$guardar = $this->bd->query($sql);
+
+		$resultado = false;
+		if ($guardar) {
+			$resultado = true;
+		}
+		return $resultado;
+	}
 
 }
 ?>

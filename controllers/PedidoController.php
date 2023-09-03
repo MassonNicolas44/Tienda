@@ -9,6 +9,8 @@ class pedidoController
         require_once 'views/pedido/realizar.php';
     }
 
+    //Funcion para insertar el pedido del usuario en la Base de Datos (Guardar datos de envio - Productos con Cantidades - Ajustar Stock de cada producto)
+
     public function agregar()
     {
         if (isset($_SESSION['identificacion'])) {
@@ -52,6 +54,8 @@ class pedidoController
 
     }
 
+    //Funcion para mostrar el pedido seleccionado por el usuario logeado
+
     public function confirmado()
     {
 
@@ -69,6 +73,10 @@ class pedidoController
         }
         require_once 'views/pedido/confirmado.php';
     }
+
+    //Trae todos los pedidos de la Base de Datos.
+//Si es un administrador la persona logeada, se mostraran todos los pedidos de todos los usuarios
+//Si es un usuario la persona logeada, se mostraran todos sus pedidos unicamente
 
     public function misPedidos()
     {
@@ -93,6 +101,8 @@ class pedidoController
 
         require_once 'views/pedido/misPedidos.php';
     }
+
+    //Trae desde la Base de Datos el pedido seleccionado junto a todos los productos dentro del mismo
 
     public function detallePedido()
     {
@@ -119,6 +129,8 @@ class pedidoController
         }
     }
 
+    //Cambia el estado del pedido seleccionado y lo guarda en la Base de Datos
+
     public function estadoPedido()
     {
         utilidades::esAdministrador();
@@ -131,6 +143,8 @@ class pedidoController
             $pedido = new Pedido();
             $pedido->setId_Pedido($id);
             $pedido->setEstado($estado);
+
+            //En caso del estado del pedido a cambiar sea "Devolucion Pedido", devuelve a cada producto las unidades del pedido
 
             if ($_POST['estadoPedido'] == "Devolucion Pedido") {
 
@@ -147,7 +161,7 @@ class pedidoController
 
             unset($_SESSION['devolucion']);
 
-        } 
+        }
 
         header("Location:" . base_url . '?controller=pedido&accion=misPedidos');
 

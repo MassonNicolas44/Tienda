@@ -4,18 +4,19 @@
 <div id="contenido">
     <aside id="barra">
 
-<?php if ((isset($_SESSION['rol'])) && $_SESSION['rol'] == "usuario") { ?>
+        <?php if ((isset($_SESSION['rol'])) && $_SESSION['rol'] == "usuario") { ?>
 
-        <div id="compra" class="block_aside">
+            <div id="compra" class="block_aside">
 
-            <h3>Lista de Compra</h3>
-            <ul>
-                <li><a href="<?=base_url?>?controller=compra&accion=index">Ver Compras</a></li>
-            </ul>
+                <h3>Lista de Compra</h3>
+                <ul>
+                    <li><a href="<?= base_url ?>?controller=compra&accion=index">Ver Compras</a></li>
+                </ul>
 
-        </div>
+            </div>
 
-<?php };?>
+        <?php }
+        ; ?>
         <div id="login" class="block_aside">
 
             <?php
@@ -39,7 +40,9 @@
 
 
                 <h3>
-                    <?php echo $_SESSION['identificacion']->nombre . " " . $_SESSION['identificacion']->apellido ?>
+                    <?php
+                    //Muestra el nombre y apellido de la persona logeada (Sea usuario o administrador)
+                    echo $_SESSION['identificacion']->nombre . " " . $_SESSION['identificacion']->apellido ?>
                 </h3>
 
             <?php }
@@ -50,6 +53,7 @@
                 <?php
 
                 if (isset($_SESSION['rol'])) {
+                    //Dependiendo si es Administrador o Usuario, mostrara distintas opciones a seleccionar
                     if ($_SESSION['rol'] == "administrador") { ?>
 
                         <li><a href="<?= base_url ?>?controller=categoria&accion=index">Gestionar categorias</a></li>

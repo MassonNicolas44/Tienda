@@ -146,17 +146,23 @@ class Pedido
 
 	}
 
+	//Consulta para traer todos los pedidos y ordenarlos por Id de manera descendiente
+
 	public function getPedidos()
 	{
 		$getPedidos = $this->bd->query("SELECT * FROM pedidos ORDER BY id_Pedido desc");
 		return $getPedidos;
 	}
 
+	//Consulta para traer 1 pedido en particular
+
 	public function getPedido()
 	{
 		$getPedido = $this->bd->query("SELECT * FROM pedidos WHERE id_Pedido={$this->getId_Pedido()}");
 		return $getPedido->fetch_object();
 	}
+
+	//Consulta para traer el ultimo pedido de 1 usuario en particular
 
 	public function getPedidoUsuario()
 	{
@@ -166,6 +172,8 @@ class Pedido
 		return $getPedidoUsuario->fetch_object();
 	}
 
+	//Consulta para traer todos los pedidos de 1 usuario en particular
+
 	public function getTodoPedidoUsuario()
 	{
 		$getTodoPedidoUsuario = $this->bd->query("SELECT P.* FROM pedidos AS P
@@ -174,6 +182,8 @@ class Pedido
 		return $getTodoPedidoUsuario;
 	}
 
+	//Consulta para traer los productos de 1 pedido en particular
+
 	public function getPedidoProductos($IdPedido)
 	{
 		$sql = "SELECT pr.*, pp.unidades FROM productos as pr INNER JOIN pedidos_productos as pp ON pr.id_Producto=pp.id_Producto where pp.id_Pedido={$IdPedido}";
@@ -181,6 +191,8 @@ class Pedido
 
 		return $getPedidoProductos;
 	}
+
+	//Agregar pedido a la Base de Datos
 
 	public function guardar()
 	{
@@ -196,12 +208,17 @@ class Pedido
 	}
 
 
+	//Agregar relacion entre Pedido-Producto a la Base de Datos
+
 	public function guardar_Pedido_Producto()
 	{
 		//Retoma el ultimo ID insertado en la BD
 		$sql = "SELECT LAST_INSERT_ID() AS 'UltimoIdPedido';";
 		$query = $this->bd->query($sql);
 		$pedido_id = $query->fetch_object()->UltimoIdPedido;
+
+		//Recorrer la session donde esta guardado los productos con los datos de (Id y cantidad)
+		//Inserta cada producto con sus cantidades respectivamente con el pedido a agregar
 
 		foreach ($_SESSION['compra'] as $indice => $elemento) {
 
@@ -220,9 +237,13 @@ class Pedido
 		return $resultado;
 	}
 
+	//Actualizar stock al realizar o anular un pedido
 
 	public function actualizarStock()
 	{
+
+		//Recorrer la session donde esta guardado los productos con los datos de (Id y cantidad)
+		//Actualiza el stock de cada producto
 
 		foreach ($_SESSION['compra'] as $indice => $elemento) {
 
@@ -239,6 +260,7 @@ class Pedido
 		return $resultado;
 	}
 
+	//Actualiza el estado del pedido
 
 	public function actualizarPedido()
 	{
@@ -258,12 +280,16 @@ class Pedido
 		return $resultado;
 	}
 
+	//Devolucion de un pedido
+
 	public function devolucionPedido()
 	{
 
+		//Recorrer la session donde esta guardado los productos a devolver a stock y actualiza los valores mismos
+
 		foreach ($_SESSION['devolucion'] as $indice => $elemento) {
 
-			$idProducto=$_SESSION['devolucion'][$indice]['idProducto'];
+			$idProducto = $_SESSION['devolucion'][$indice]['idProducto'];
 			$unidadesPedido = $_SESSION['devolucion'][$indice]['unidades'];
 			$unidadeStockInicial = $_SESSION['devolucion'][$indice]['stock'];
 
@@ -275,7 +301,11 @@ class Pedido
 
 		}
 
+		//Borra la session de los datos de productos a devolver
+
 		unset($_SESSION['devolucion']);
+
+		//Actualiza el estado del pedido
 
 		$sql = "UPDATE pedidos SET estado='{$this->getEstado()}' WHERE Id_Pedido={$this->getId_Pedido()} ";
 

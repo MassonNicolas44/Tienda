@@ -1,4 +1,7 @@
 <?php
+
+//Muestra los datos del producto seleccionado (Nombre,Imagen,Descripcion,Precio,Stock)
+
 if (isset($traerProducto)): ?>
     <h1>
         <?= $traerProducto->nombre ?>

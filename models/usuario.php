@@ -88,6 +88,8 @@ class Usuario
 		$this->imagen = $imagen;
 	}
 
+	//Agregar un nuevo Usuario a la Base de Datos
+
 	public function guardar()
 	{
 		$sql = "INSERT INTO usuarios VALUES(NULL, '{$this->getNombre()}', '{$this->getApellido()}', '{$this->getEmail()}', '{$this->getPassword()}', '{$this->getRol()}', null);";
@@ -100,6 +102,8 @@ class Usuario
 		return $resultado;
 	}
 
+	//Comprobacion de los datos ingresados por el usuario coinicidan con alguno de la Base de Datos
+
 	public function login()
 	{
 		$resultado = false;
@@ -108,6 +112,8 @@ class Usuario
 
 		$sql = "SELECT * from usuarios where email='$email'";
 		$login = $this->bd->query($sql);
+
+		//En caso de encontrar una coincidencia se pasa a verificar la contrasena cifrada
 
 		if ($login && $login->num_rows == 1) {
 			//Obtener datos del usuario

@@ -5,6 +5,8 @@ require_once 'models/producto.php';
 class productoController
 {
 
+    //Guarda en una variable 6 productos, seleccionados al azar desde la Base de Datos
+
     public function index()
     {
 
@@ -13,6 +15,8 @@ class productoController
 
         require_once 'views/producto/destacados.php';
     }
+
+    //Recoge los datos de todos los productos de la Base de Datos
 
     public function gestion()
     {
@@ -24,11 +28,15 @@ class productoController
         require_once 'views/producto/gestion.php';
     }
 
+    //Pagina donde se crea un nuevo producto
+
     public function crear()
     {
         utilidades::esAdministrador();
         require_once 'views/producto/crear.php';
     }
+
+    //Recoge los datos del Producto seleccionado desde la Base de Datos
 
     public function ver()
     {
@@ -44,6 +52,7 @@ class productoController
         require_once 'views/producto/ver.php';
     }
 
+    //Funcion para guardar el producto en cuestion
 
     public function guardar()
     {
@@ -102,6 +111,8 @@ class productoController
 
     }
 
+    //Funcion para editar el producto seleccionado
+
     public function editar()
     {
         utilidades::esAdministrador();
@@ -122,6 +133,8 @@ class productoController
         }
 
     }
+
+    //Funcion para eliminar el producto seleccionado
 
     public function eliminar()
     {

@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-if (isset($gestion) && ($gestion==true)) { ?>
+if (isset($gestion) && ($gestion == true)) { ?>
     <h1>Gestion Pedidos</h1>
 <?php } else { ?>
     <h1>Mis Pedidos</h1>
@@ -15,7 +15,7 @@ if (isset($gestion) && ($gestion==true)) { ?>
         <th>Estado Pedido</th>
     </tr>
 
-    <?php while ($ped = $pedidos->fetch_object()) {  
+    <?php while ($ped = $pedidos->fetch_object()) {
         ?>
 
         <tr>

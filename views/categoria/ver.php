@@ -7,7 +7,9 @@ if (isset($categoria)): ?>
 		<p>No hay productos</p>
 	<?php } else { ?>
 
-		<?php while ($azar = $productos->fetch_object()): ?>
+		<?php
+		//Recorre y muestras los productos que pertenecen a la categorias seleccionada  (Id,Imagen,Nombre,Precio,Stock)
+		while ($azar = $productos->fetch_object()): ?>
 
 			<div class="product">
 				<a href="<?= base_url ?>?controller=producto&accion=ver&id=<?= $azar->id_Producto ?>">
@@ -23,17 +25,15 @@ if (isset($categoria)): ?>
 					</h2>
 				</a>
 				<p>
-					<?= "Precio: $".$azar->precio ?>
+					<?= "Precio: $" . $azar->precio ?>
 				</p>
 				<p>
-					<?= "Stock: ".$azar->stock." Unidades" ?>
+					<?= "Stock: " . $azar->stock . " Unidades" ?>
 				</p>
 				<a href="<?= base_url ?>?controller=producto&accion=ver&id=<?= $azar->id_Producto ?>" class="button">Ver</a>
 			</div>
 
 		<?php endwhile; ?>
-
-
 	<?php } else: ?>
 	<h1>La categoría no existe</h1>
 <?php endif; ?>
