@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-08-2023 a las 04:25:54
+-- Tiempo de generación: 26-08-2023 a las 02:04:31
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -143,7 +143,10 @@ INSERT INTO `productos` (`id_Producto`, `id_Categoria`, `nombre`, `descripcion`,
 (16, 4, 'Bajo Mesada', '    Bajo Mesada para Laboratorio', 600.00, 10, '2023-08-05', 'BajoMesada.jpg'),
 (17, 10, 'Parlante JBL', 'Parlante para Fiesta ', 5000.00, 10, '2023-08-21', 'parlante.jpg'),
 (18, 3, 'Mueble Pared', ' Mueble para comedor', 10000.00, 3, '2023-08-21', 'Mueble.jpg'),
-(19, 8, 'Escritorio Pc', 'Pc Oficina ', 500.00, 5, '2023-08-21', 'Escritorio.jpg');
+(19, 8, 'Escritorio Pc', 'Pc Oficina ', 500.00, 5, '2023-08-21', 'Escritorio.jpg'),
+(20, 2, 'Silla Escritorio Tipo 2', ' Tipo 2', 1000.00, 3, '2023-08-25', 'SillaEscritorioTipo2.jpg'),
+(21, 2, 'Silla Gamer', 'Marca Gamer ', 1500.00, 5, '2023-08-25', 'SillaGamer.jpg'),
+(22, 2, 'Silla Madera', 'Silla Basica ', 700.00, 4, '2023-08-25', 'SillaMadera.jpg');
 
 -- --------------------------------------------------------
 
@@ -236,7 +239,7 @@ ALTER TABLE `pedidos_productos`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_Producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_Producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
